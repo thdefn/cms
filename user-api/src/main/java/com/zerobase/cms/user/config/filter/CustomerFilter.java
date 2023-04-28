@@ -2,7 +2,7 @@ package com.zerobase.cms.user.config.filter;
 
 import com.zerobase.cms.domain.config.JwtAuthenticationProvider;
 import com.zerobase.cms.domain.domain.common.UserVo;
-import com.zerobase.cms.user.service.CustomerService;
+import com.zerobase.cms.user.service.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 
 import javax.servlet.*;
