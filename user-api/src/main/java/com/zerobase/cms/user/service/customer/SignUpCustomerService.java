@@ -1,4 +1,4 @@
-package com.zerobase.cms.user.service;
+package com.zerobase.cms.user.service.customer;
 
 import com.zerobase.cms.user.domain.SignUpForm;
 import com.zerobase.cms.user.domain.model.Customer;
@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.Optional;
+
+import static com.zerobase.cms.user.exception.ErrorCode.*;
 
 @Service
 @RequiredArgsConstructor
@@ -38,20 +40,20 @@ public class SignUpCustomerService {
             customer.setVerifyExpiredAt(LocalDateTime.now().plusHours(1));
             return customer.getVerifyExpiredAt();
         }
-        throw new CustomException(ErrorCode.NOT_FOUND_USER);
+        throw new CustomException(NOT_FOUND_USER);
     }
 
     @Transactional
     public void verifyEmail(String email, String code) {
         Customer customer = customerRepository.findByEmail(email)
-                .orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_USER));
+                .orElseThrow(() -> new CustomException(NOT_FOUND_USER));
 
         if (customer.isVerify()) {
-            throw new CustomException(ErrorCode.ALREADY_VERIFY);
+            throw new CustomException(ALREADY_VERIFY);
         } else if (!customer.getVerificationCode().equals(code)) {
-            throw new CustomException(ErrorCode.WRONG_VERIFICATION);
+            throw new CustomException(WRONG_VERIFICATION);
         } else if (customer.getVerifyExpiredAt().isBefore(LocalDateTime.now())) {
-            throw new CustomException(ErrorCode.EXPIRE_CODE);
+            throw new CustomException(EXPIRE_CODE);
         }
 
         customer.setVerify();
