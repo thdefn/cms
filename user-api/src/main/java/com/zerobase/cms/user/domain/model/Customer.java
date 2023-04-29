@@ -33,6 +33,9 @@ public class Customer extends BaseEntity {
     private String verificationCode;
     private boolean verify;
 
+    @Column(columnDefinition = "int default 0")
+    private Integer balance;
+
     public static Customer from(SignUpForm form) {
         return Customer.builder()
                 .email(form.getEmail().toLowerCase(Locale.ROOT))
@@ -44,15 +47,19 @@ public class Customer extends BaseEntity {
                 .build();
     }
 
-    public void setVerificationCode(String verificationCode){
+    public void setVerificationCode(String verificationCode) {
         this.verificationCode = verificationCode;
     }
 
-    public void setVerifyExpiredAt(LocalDateTime localDateTime){
+    public void setVerifyExpiredAt(LocalDateTime localDateTime) {
         this.verifyExpiredAt = localDateTime;
     }
 
-    public void setVerify(){
+    public void setVerify() {
         this.verify = true;
+    }
+
+    public void setBalance(int changeMoney) {
+        this.balance = changeMoney;
     }
 }
