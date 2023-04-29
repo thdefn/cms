@@ -1,3 +1,4 @@
 rootProject.name = 'cms'
 include('user-api')
+include('order-api')
 include('zerobase-domain')
