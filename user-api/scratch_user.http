@@ -40,5 +40,22 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKc
 #####################
 
 ### 회원가입 (셀러)
+POST http://localhost:8081/signup/seller
+Content-Type: application/json
+
+{
+  "birth": "1999-08-14",
+  "email": "20190914@sungshin.ac.kr",
+  "name": "셀러최고심",
+  "password": "password",
+  "phone": "01011111111"
+}
 
 ### 로그인 (셀러)
+POST http://localhost:8081/signin/seller
+Content-Type: application/json
+
+{
+  "email": "thdefn@gmail.com",
+  "password": "string"
+}
