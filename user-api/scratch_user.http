@@ -1,0 +1,44 @@
+### 회원가입 (고객)
+POST http://localhost:8081/signup/customer
+Content-Type: application/json
+
+{
+  "birth": "1999-08-14",
+  "email": "20190914@sungshin.ac.kr",
+  "name": "최고심",
+  "password": "password",
+  "phone": "01011111111"
+}
+### 이메일 인증 (고객)
+GET http://localhost:8081/signup/customer/verify?email=20190914@sungshin.ac.kr&code=4UaalaKA14
+
+### 로그인 (고객)
+POST http://localhost:8081/signin/customer
+Content-Type: application/json
+
+{
+  "email": "thdefn@gmail.com",
+  "password": "string"
+}
+
+### 회원 정보 조회 (고객)
+GET http://localhost:8081/customer/getInfo
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKcGNjWGF5S1huSHh0c2E5M0RVPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODI3NTAzNTUsImV4cCI6MTY4MjgzNjc1NX0.hxnegxY6fmoAOlXHeHoCnJBT39umG-Y1DPIMynSSLAhIrKFfEuL4PCRiGwe43lh0jpZojXqV-S867qhgAN3nYA
+
+### 잔액 변경 (고객)
+POST http://localhost:8081/customer/balance
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKcGNjWGF5S1huSHh0c2E5M0RVPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiQ1VTVE9NRVIiLCJpYXQiOjE2ODI3NTAzNTUsImV4cCI6MTY4MjgzNjc1NX0.hxnegxY6fmoAOlXHeHoCnJBT39umG-Y1DPIMynSSLAhIrKFfEuL4PCRiGwe43lh0jpZojXqV-S867qhgAN3nYA
+
+{
+  "from": "server",
+  "message": "돈 충전",
+  "money": 50000
+}
+
+#####################
+
+### 회원가입 (셀러)
+
+### 로그인 (셀러)
