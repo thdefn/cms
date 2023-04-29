@@ -45,9 +45,9 @@ Content-Type: application/json
 
 {
   "birth": "1999-08-14",
-  "email": "20190914@sungshin.ac.kr",
+  "email": "thdefn@gmail.com",
   "name": "셀러최고심",
-  "password": "password",
+  "password": "string",
   "phone": "01011111111"
 }
 
