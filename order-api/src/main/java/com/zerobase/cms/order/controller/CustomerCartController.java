@@ -24,4 +24,11 @@ public class CustomerCartController {
                         jwtAuthenticationProvider.getUserVo(token).getId(), form));
     }
 
+    @GetMapping
+    public ResponseEntity<Cart> getCart(@RequestHeader(name = "X-AUTH-TOKEN") String token){
+        return ResponseEntity.ok(
+                cartApplication.getCart(
+                        jwtAuthenticationProvider.getUserVo(token).getId()));
+    }
+
 }

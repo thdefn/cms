@@ -49,7 +49,7 @@ class ProductServiceTest {
         return AddProductForm.builder()
                 .name(name)
                 .description(description)
-                .addProductItemForms(itemForms)
+                .items(itemForms)
                 .build();
     }
 
