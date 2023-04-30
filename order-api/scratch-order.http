@@ -4,7 +4,7 @@ Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKcGNjWGF5S1huSHh0c2E5M0RVPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgyODAyNzQ2LCJleHAiOjE2ODI4ODkxNDZ9.BKkpfsoEtkOaN9jXIr3Ujy9fvsoAQnsUzNXTbzYvczFUmEaRRtyonYYTgO7JGgU9ZExnlrhZfMBWZ2bBZ-73UA
 
 {
-  "addProductItemForms": [
+  "items": [
     {
       "count": 1,
       "name": "270",
@@ -24,5 +24,37 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKc
   "productId": 1,
   "count": 1,
   "name": "280",
+  "price": 10000
+}
+
+### 상품 수정
+PUT http://localhost:8082/seller/product
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKcGNjWGF5S1huSHh0c2E5M0RVPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgyODAyNzQ2LCJleHAiOjE2ODI4ODkxNDZ9.BKkpfsoEtkOaN9jXIr3Ujy9fvsoAQnsUzNXTbzYvczFUmEaRRtyonYYTgO7JGgU9ZExnlrhZfMBWZ2bBZ-73UA
+
+{
+  "items": [
+    {
+      "id" : 1,
+      "count": 1,
+      "name": "240",
+      "price": 10000
+    }
+  ],
+  "id" : 1,
+  "description": "상품에 대한 설명을 업데이트",
+  "name": "나이키 에어포스 업데이트"
+}
+
+### 상품 아이템 수정
+PUT http://localhost:8082/seller/product/item
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKcGNjWGF5S1huSHh0c2E5M0RVPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgyODAyNzQ2LCJleHAiOjE2ODI4ODkxNDZ9.BKkpfsoEtkOaN9jXIr3Ujy9fvsoAQnsUzNXTbzYvczFUmEaRRtyonYYTgO7JGgU9ZExnlrhZfMBWZ2bBZ-73UA
+
+{
+  "id": 1,
+  "productId": 1,
+  "count": 1,
+  "name": "255",
   "price": 10000
 }
