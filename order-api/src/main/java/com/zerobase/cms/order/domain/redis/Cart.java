@@ -25,6 +25,10 @@ public class Cart {
         messages.add(message);
     }
 
+    public Cart(Long customerId) {
+        this.customerId = customerId;
+    }
+
     @Data
     @Builder
     @NoArgsConstructor
