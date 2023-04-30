@@ -106,3 +106,31 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKc
 GET http://localhost:8082/customer/cart
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKcGNjWGF5S1huSHh0c2E5M0RVPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgyODIwMTAxLCJleHAiOjE2ODI5MDY1MDF9.zLzEW7884icJmacGTOlmCEUbqkkzDHukEmZRi_gi2K7b10cIFlvIoK7mwtgVSEX630yuxkj3XitmNTdQSggKbA
+
+### 카트 수정
+PUT http://localhost:8082/customer/cart
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKcGNjWGF5S1huSHh0c2E5M0RVPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgyODIwMTAxLCJleHAiOjE2ODI5MDY1MDF9.zLzEW7884icJmacGTOlmCEUbqkkzDHukEmZRi_gi2K7b10cIFlvIoK7mwtgVSEX630yuxkj3XitmNTdQSggKbA
+
+{
+  "customerId": 0,
+  "messages": [
+    "string"
+  ],
+  "products": [
+    {
+      "description": "string",
+      "id": 0,
+      "items": [
+        {
+          "count": 0,
+          "id": 0,
+          "name": "string",
+          "price": 0
+        }
+      ],
+      "name": "string",
+      "sellerId": 0
+    }
+  ]
+}
