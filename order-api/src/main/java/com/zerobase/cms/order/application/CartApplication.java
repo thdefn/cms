@@ -71,7 +71,7 @@ public class CartApplication {
         cartService.putCart(customerId, null);
     }
 
-    private Cart refreshCart(Cart cart) {
+    protected Cart refreshCart(Cart cart) {
         // 1. 상품이나 상품의 아이템의 정보, 가격, 수량이 변경되었는지 체크하고
         // 2. 그에 맞는 알람을 제공
         // 3. 상품의 수량, 가격을 우리가 임의로 변경한다.
