@@ -1,6 +1,8 @@
 package com.zerobase.cms.order.application;
 
+import com.zerobase.cms.order.client.MailgunClient;
 import com.zerobase.cms.order.client.UserClient;
+import com.zerobase.cms.order.client.mailgun.SendMailForm;
 import com.zerobase.cms.order.client.user.ChangeBalanceForm;
 import com.zerobase.cms.order.client.user.CustomerDto;
 import com.zerobase.cms.order.domain.model.ProductItem;
@@ -12,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.stream.IntStream;
 
 @Service
@@ -21,6 +25,8 @@ public class OrderApplication {
     private final CartApplication cartApplication;
     private final ProductItemService productItemService;
     private final UserClient userClient;
+
+    private final MailgunClient mailgunClient;
 
     @Transactional
     public void order(String token, Cart cart) {
@@ -44,12 +50,8 @@ public class OrderApplication {
                         .money(-totalPrice)
                         .build());
 
-        for (Cart.Product product : orderCart.getProducts()){
-            for(Cart.ProductItem cartItem : product.getItems()){
-                ProductItem productItem = productItemService.getProductItem(cartItem.getId());
-                productItem.setCount(productItem.getCount()- cartItem.getCount());
-            }
-        }
+        String mailBody = modifyInventoryAndMakeMailBody(orderCart.getProducts(), totalPrice);
+        sendOrderHistoryMail(customerDto.getEmail(), mailBody);
     }
 
     private Integer getTotalPrice(Cart cart) {
@@ -57,6 +59,32 @@ public class OrderApplication {
                         product -> product.getItems().stream().flatMapToInt(
                                 productItem -> IntStream.of(productItem.getPrice() * productItem.getCount())))
                 .sum();
+    }
+
+    private String modifyInventoryAndMakeMailBody(List<Cart.Product> products, int totalPrice) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("안녕하세요, 고객님. ")
+                .append(LocalDateTime.now() + " 에 주문하신 내역에 대해 안내드립니다. \n");
+
+        for (Cart.Product product : products) {
+            stringBuilder.append("---" + product.getName() + "---\n");
+            for (Cart.ProductItem cartItem : product.getItems()) {
+                ProductItem productItem = productItemService.getProductItem(cartItem.getId());
+                productItem.setCount(productItem.getCount() - cartItem.getCount());
+                stringBuilder.append(cartItem.getName() + " - " + cartItem.getPrice() * cartItem.getCount() + "\n");
+            }
+        }
+
+        return stringBuilder.append("\n\n총 결제 금액 : " + totalPrice).toString();
+    }
+
+    private void sendOrderHistoryMail(String email, String body) {
+        mailgunClient.sendEmail(SendMailForm.builder()
+                .to(email)
+                .from("ododieod@gmail.com")
+                .subject("안녕하세요, 고객님. 주문 내역 안내드립니다. ")
+                .text(body)
+                .build());
     }
 
     // 결제를 위해 필요한 것

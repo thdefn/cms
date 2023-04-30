@@ -6,8 +6,8 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKc
 {
   "items": [
     {
-      "count": 1,
-      "name": "270",
+      "count": 3,
+      "name": "255",
       "price": 100000
     }
   ],
@@ -21,10 +21,10 @@ Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKcGNjWGF5S1huSHh0c2E5M0RVPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgyODIwMTAxLCJleHAiOjE2ODI5MDY1MDF9.zLzEW7884icJmacGTOlmCEUbqkkzDHukEmZRi_gi2K7b10cIFlvIoK7mwtgVSEX630yuxkj3XitmNTdQSggKbA
 
 {
-  "productId": 26,
+  "productId": 30,
   "count": 1,
-  "name": "250",
-  "price": 100000
+  "name": "220",
+  "price": 50000
 }
 
 ### 상품 수정
@@ -77,7 +77,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKc
 
 
 ### 상품 디테일 검색
-GET http://localhost:8082/search/product/detail?id=1
+GET http://localhost:8082/search/product/detail?id=29
 Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKcGNjWGF5S1huSHh0c2E5M0RVPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgyODIwMTAxLCJleHAiOjE2ODI5MDY1MDF9.zLzEW7884icJmacGTOlmCEUbqkkzDHukEmZRi_gi2K7b10cIFlvIoK7mwtgVSEX630yuxkj3XitmNTdQSggKbA
 
@@ -88,19 +88,13 @@ Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKcGNjWGF5S1huSHh0c2E5M0RVPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjgyODIwMTAxLCJleHAiOjE2ODI5MDY1MDF9.zLzEW7884icJmacGTOlmCEUbqkkzDHukEmZRi_gi2K7b10cIFlvIoK7mwtgVSEX630yuxkj3XitmNTdQSggKbA
 
 {
-  "id": 26,
+  "id": 29,
   "name": "나이키 에어포스",
   "description": "상품에 대한 설명",
   "items": [
     {
-      "id": 74,
+      "id": 79,
       "name": "270",
-      "price": 110000,
-      "count": 0
-    },
-    {
-      "id": 75,
-      "name": "290",
       "price": 100000,
       "count": 1
     }
@@ -149,15 +143,35 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJHNE9CKzVNV3k0QkwvS2JaQXFaQmkwK2pKc
   "customerId": 1,
   "products": [
     {
-      "id": 26,
+      "id": 30,
+      "sellerId": 1,
+      "name": "나이키 에어포스 2",
+      "description": "상품에 대한 설명",
+      "items": [
+        {
+          "id": 80,
+          "name": "255",
+          "count": 1,
+          "price": 100000
+        },
+        {
+          "id": 81,
+          "name": "220",
+          "count": 0,
+          "price": 50000
+        }
+      ]
+    },
+    {
+      "id": 29,
       "sellerId": 1,
       "name": "나이키 에어포스",
       "description": "상품에 대한 설명",
       "items": [
         {
-          "id": 75,
-          "name": "290",
-          "count": 1,
+          "id": 79,
+          "name": "270",
+          "count": 2,
           "price": 100000
         }
       ]
