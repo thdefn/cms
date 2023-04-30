@@ -1,5 +1,6 @@
 package com.zerobase.cms.order.domain.product;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.zerobase.cms.order.domain.model.Product;
 import lombok.*;
 
@@ -15,9 +16,10 @@ public class ProductDto {
     private Long id;
     private String name;
     private String description;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<ProductItemDto> items;
 
-    public static ProductDto from(Product product){
+    public static ProductDto from(Product product) {
         List<ProductItemDto> itemDtos = product.getProductItems()
                 .stream().map(ProductItemDto::from).collect(Collectors.toList());
 
@@ -26,6 +28,14 @@ public class ProductDto {
                 .name(product.getName())
                 .description(product.getDescription())
                 .items(itemDtos)
+                .build();
+    }
+
+    public static ProductDto withoutItemsFrom(Product product) {
+        return ProductDto.builder()
+                .id(product.getId())
+                .name(product.getName())
+                .description(product.getDescription())
                 .build();
     }
 }
